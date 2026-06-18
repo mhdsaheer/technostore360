@@ -7,13 +7,13 @@ export function ResellerCta() {
       <div className="relative overflow-hidden rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/15 via-card to-card p-8 md:p-12">
         <div className="pointer-events-none absolute -right-10 -top-10 size-64 rounded-full bg-primary/20 blur-3xl" />
         <div className="relative grid items-center gap-8 md:grid-cols-[auto_1fr_auto]">
-          <div className="flex items-baseline gap-4">
+          <div className="flex items-center gap-4">
             <span className="text-6xl font-extrabold text-primary md:text-7xl">25%</span>
             <div className="border-l border-border pl-4">
-              <p className="text-lg font-bold leading-tight text-foreground">
+              <p className="text-xl font-bold leading-tight text-foreground">
                 Join as a <span className="text-primary">Reseller</span>
               </p>
-              <p className="text-lg font-bold leading-tight text-foreground">
+              <p className="text-xl font-bold leading-tight text-foreground">
                 and earn a commission!
               </p>
             </div>

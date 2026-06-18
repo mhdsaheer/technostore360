@@ -1,7 +1,6 @@
 "use client"
 
-
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import {
   Search,
   ChevronDown,
@@ -14,11 +13,68 @@ import {
 import { Button } from "@/components/ui/button"
 
 const stats = [
-  { value: "10k+", label: "Businesses powered" },
-  { value: "1000+", label: "Vetted products" },
-  { value: "3", label: "Countries served" },
-  { value: "99.9%", label: "Uptime SLA" },
+  { end: 10, suffix: "k+", label: "Businesses powered" },
+  { end: 1000, suffix: "+", label: "Vetted products" },
+  { end: 3, suffix: "", label: "Countries served" },
+  { end: 99.9, suffix: "%", label: "Uptime SLA" },
 ]
+
+function useCountUp(end: number, suffix: string, duration = 1800) {
+  const [display, setDisplay] = useState("0" + suffix)
+  const ref = useRef<HTMLDivElement>(null)
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    function startCount() {
+      if (intervalRef.current) clearInterval(intervalRef.current)
+      const isDecimal = end % 1 !== 0
+      const steps = 60
+      const increment = end / steps
+      let current = 0
+      setDisplay("0" + suffix)
+      intervalRef.current = setInterval(() => {
+        current += increment
+        if (current >= end) {
+          current = end
+          clearInterval(intervalRef.current!)
+          intervalRef.current = null
+        }
+        setDisplay(
+          (isDecimal ? current.toFixed(1) : Math.floor(current).toString()) + suffix
+        )
+      }, duration / steps)
+    }
+
+    function stopCount() {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+        intervalRef.current = null
+      }
+      setDisplay("0" + suffix)
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          startCount()
+        } else {
+          stopCount()
+        }
+      },
+      { threshold: 0.5 }
+    )
+    observer.observe(el)
+    return () => {
+      observer.disconnect()
+      if (intervalRef.current) clearInterval(intervalRef.current)
+    }
+  }, [end, suffix, duration])
+
+  return { display, ref }
+}
 
 const trust = [
   { icon: ShieldCheck, text: "Enterprise-grade security" },
@@ -26,6 +82,16 @@ const trust = [
   { icon: Globe, text: "India · UAE · Oman" },
   { icon: Star, text: "4.9 / 5 customer rating" },
 ]
+
+function StatCounter({ end, suffix, label }: { end: number; suffix: string; label: string }) {
+  const { display, ref } = useCountUp(end, suffix)
+  return (
+    <div ref={ref} className="text-center">
+      <p className="text-4xl font-bold text-foreground tabular-nums">{display}</p>
+      <p className="text-xs text-muted-foreground">{label}</p>
+    </div>
+  )
+}
 
 export function Hero() {
   const [query, setQuery] = useState("")
@@ -129,13 +195,10 @@ export function Hero() {
 
         {/* ── Stats row ── */}
         <div className="mx-auto mt-12 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-          {stats.map(({ value, label }, i) => (
+          {stats.map(({ end, suffix, label }, i) => (
             <div key={label} className="flex items-center gap-10">
               {i > 0 && <span className="hidden h-8 w-px bg-border sm:block" />}
-              <div className="text-center">
-                <p className="text-2xl font-bold text-foreground">{value}</p>
-                <p className="text-xs text-muted-foreground">{label}</p>
-              </div>
+              <StatCounter end={end} suffix={suffix} label={label} />
             </div>
           ))}
         </div>
