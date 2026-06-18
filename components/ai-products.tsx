@@ -14,15 +14,15 @@ export function AiProducts() {
     <section className="mx-auto max-w-7xl px-6 pb-20 md:pb-28">
       {/* Outer Bordered Container */}
       <div className="rounded-3xl border border-border bg-card p-6 md:p-10 space-y-8 shadow-2xl">
-        
+
         {/* Header Row */}
         <div className="flex justify-between items-center pb-4 border-b border-border/60">
           <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-muted-foreground">
             <span className="text-primary font-extrabold text-base leading-none">*</span> AI &amp; INNOVATION
           </div>
-          
+
           {/* Integration Icons (Social Style) */}
-          
+
         </div>
 
         {/* Center Visual Frame with Stepped Cutouts */}
@@ -34,20 +34,20 @@ export function AiProducts() {
             className="object-cover w-full h-full"
             priority
           />
-          
+
           {/* Subtle overlay gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10 pointer-events-none" />
 
           {/* Stepped Cutout Masks (Matching Page/Card Background Color) */}
           {/* 1. Top Horizontal Mask (left to 78%) */}
-          <div className="absolute top-0 left-0 w-[78%] h-[12%] bg-card pointer-events-none rounded-b-[1.5rem]" />
-          
+
+
           {/* 2. Top-Left Vertical Mask (overlapping to deepen corner cutout) */}
-        
-          
+
+
           {/* 3. Bottom-Left Cutout Mask */}
-          
-          
+
+
           {/* 4. Bottom-Right Stats Cutout Mask */}
           <div className="absolute bottom-0 right-0 w-[30%] h-[38%] bg-card rounded-tl-[1.5rem] border-t border-l border-border/20 flex flex-col justify-center px-6 py-4">
             <p className="text-3xl md:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
@@ -59,19 +59,19 @@ export function AiProducts() {
             <p className="text-[10px] text-muted-foreground opacity-80 mt-0.5">
               99.9% reliability SLA
             </p>
+            <div className="flex items-center gap-3 text-xs font-semibold text-muted-foreground mt-4">
+              <span className="text-primary font-bold">50+</span> AI models
+              <span className="text-border">|</span>
+              <span className="text-primary font-bold">24/7</span> autonomous agents
+            </div>
           </div>
         </div>
 
-        {/* Experience Label Sub-strip */}
-        <div className="flex items-center gap-3 text-xs font-semibold text-muted-foreground">
-          <span className="text-primary font-bold">50+</span> AI models
-          <span className="text-border">|</span>
-          <span className="text-primary font-bold">24/7</span> autonomous agents
-        </div>
+       
 
         {/* Details & Action Grid */}
         <div className="grid gap-8 lg:grid-cols-12 pt-2">
-          
+
           {/* Left Column: Heading and Paragraphs */}
           <div className="lg:col-span-8 space-y-6">
             <h2 className="text-3xl font-extrabold tracking-tight text-foreground md:text-4xl leading-tight">
@@ -97,13 +97,13 @@ export function AiProducts() {
                 AI Ecosystem
               </p>
             </div>
-            
+
             <p className="text-sm leading-relaxed text-muted-foreground max-w-xs">
               Ready to supercharge your business workflows with next-gen AI?
             </p>
-            
+
             <Button className="rounded-full bg-foreground text-background hover:bg-foreground/90 px-8 py-6 text-xs font-bold uppercase tracking-wider shadow-xl shadow-foreground/10 flex items-center gap-2 group transition-all duration-300">
-              Discover AI Products 
+              Discover AI Products
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </div>
