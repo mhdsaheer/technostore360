@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Plus, Minus } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { StaggerContainer, StaggerItem } from "@/components/scroll-reveal"
 
 const faqs = [
   {
@@ -37,39 +38,47 @@ export function Faq() {
         </p>
       </div>
 
-      <div className="space-y-3">
+      <StaggerContainer className="space-y-3">
         {faqs.map((item, i) => {
           const isOpen = open === i
           return (
-            <div
+            <StaggerItem
               key={item.q}
-              className="overflow-hidden rounded-2xl border border-border bg-card"
+              index={i}
+              variant="fade-up"
+              stagger={60}
+              duration={600}
+              distance={15}
             >
-              <button
-                onClick={() => setOpen(isOpen ? null : i)}
-                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
-                aria-expanded={isOpen}
-              >
-                <span className="text-sm font-medium text-foreground">{item.q}</span>
-                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-secondary text-foreground">
-                  {isOpen ? <Minus className="size-4" /> : <Plus className="size-4" />}
-                </span>
-              </button>
               <div
-                className={`grid transition-all duration-300 ${
-                  isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                }`}
+                className="overflow-hidden rounded-2xl border border-border bg-card"
               >
-                <div className="overflow-hidden">
-                  <p className="px-5 pb-5 text-sm leading-relaxed text-muted-foreground">
-                    {item.a}
-                  </p>
+                <button
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                  aria-expanded={isOpen}
+                >
+                  <span className="text-sm font-medium text-foreground">{item.q}</span>
+                  <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-secondary text-foreground">
+                    {isOpen ? <Minus className="size-4" /> : <Plus className="size-4" />}
+                  </span>
+                </button>
+                <div
+                  className={`grid transition-all duration-300 ${
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="px-5 pb-5 text-sm leading-relaxed text-muted-foreground">
+                      {item.a}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </StaggerItem>
           )
         })}
-      </div>
+      </StaggerContainer>
 
       <div className="mt-8 text-center">
         <Button variant="outline" className="rounded-full border-border bg-transparent px-8">

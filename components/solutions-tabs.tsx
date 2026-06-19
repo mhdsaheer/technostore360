@@ -12,6 +12,7 @@ import {
   Landmark,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { StaggerContainer, StaggerItem } from "@/components/scroll-reveal"
 
 const tabs = [
   "Finance",
@@ -81,19 +82,27 @@ export function SolutionsTabs() {
         </div>
 
         {/* grid */}
-        <div className="grid grid-cols-2 gap-4 p-6 sm:grid-cols-3 md:grid-cols-4 md:p-8">
-          {items.map(({ name, icon: Icon }) => (
-            <button
+        <StaggerContainer key={active} className="grid grid-cols-2 gap-4 p-6 sm:grid-cols-3 md:grid-cols-4 md:p-8">
+          {items.map(({ name, icon: Icon }, idx) => (
+            <StaggerItem
               key={name}
-              className="group flex flex-col items-center gap-3 rounded-2xl border border-border bg-secondary/30 p-5 text-center transition-all hover:-translate-y-1 hover:border-primary/50"
+              index={idx}
+              variant="fade-up"
+              stagger={40}
+              duration={500}
+              distance={15}
             >
-              <span className="flex size-12 items-center justify-center rounded-xl bg-card text-accent transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                <Icon className="size-5" />
-              </span>
-              <span className="text-sm font-medium text-foreground">{name}</span>
-            </button>
+              <button
+                className="group flex flex-col items-center gap-3 rounded-2xl border border-border bg-secondary/30 p-5 text-center transition-all hover:-translate-y-1 hover:border-primary/50 w-full"
+              >
+                <span className="flex size-12 items-center justify-center rounded-xl bg-card text-accent transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  <Icon className="size-5" />
+                </span>
+                <span className="text-sm font-medium text-foreground">{name}</span>
+              </button>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
 
       <div className="mt-8 text-center">

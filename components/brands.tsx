@@ -1,6 +1,7 @@
 "use client"
 
 import { ArrowRight, Award } from "lucide-react"
+import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/scroll-reveal"
 
 const tierStyles: Record<string, { label: string; dot: string; text: string; bg: string; border: string }> = {
   GOLD:        { label: "Gold Partner",        dot: "#F59E0B", text: "#92400E", bg: "#FFFBEB", border: "#FDE68A" },
@@ -225,12 +226,19 @@ export function Brands() {
         </div>
 
         {/* ── Brand grid ── */}
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {brands.map((brand) => {
+        <StaggerContainer className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          {brands.map((brand, idx) => {
             const t = tierStyles[brand.tier]
             return (
-              <a
+              <StaggerItem
                 key={brand.name}
+                index={idx}
+                variant="fade-up"
+                stagger={50}
+                duration={600}
+                distance={20}
+              >
+              <a
                 href="#"
                 className="group relative flex flex-col overflow-hidden rounded-2xl border border-border/50 bg-card shadow-[0_1px_3px_0_rgb(0,0,0,0.04),0_0_0_1px_rgb(0,0,0,0.02)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-border/80"
               >
@@ -271,9 +279,10 @@ export function Brands() {
                   </div>
                 </div>
               </a>
+              </StaggerItem>
             )
           })}
-        </div>
+        </StaggerContainer>
 
         {/* ── Mobile CTA ── */}
         <div className="mt-8 flex md:hidden justify-center">

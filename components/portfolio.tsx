@@ -90,7 +90,7 @@ export function Portfolio() {
   const activeProject = projects[activeIdx]
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-20 md:py-28 relative">
+    <section className="mx-auto max-w-7xl px-6 py-20 md:py-28 relative overflow-hidden">
       {/* Subtle Background Glows */}
       <div className="pointer-events-none absolute -left-4 top-1/4 h-[30rem] w-[30rem] rounded-full bg-primary/5 blur-[120px] -z-10" />
       <div className="pointer-events-none absolute -right-4 bottom-1/4 h-[30rem] w-[30rem] rounded-full bg-accent/5 blur-[120px] -z-10" />
@@ -111,9 +111,9 @@ export function Portfolio() {
 
       {/* Interactive Dashboard Container */}
       <div className="overflow-hidden rounded-3xl border border-border bg-card/40 backdrop-blur-xl shadow-2xl">
-        <div className="grid gap-0 lg:grid-cols-12 min-h-[580px]">
+        <div className="grid grid-cols-1 gap-0 lg:grid-cols-12 min-h-[580px]">
           {/* Left Column: Project Selector */}
-          <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-border bg-secondary/15 p-6 md:p-8 flex flex-col justify-between space-y-6">
+          <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-border bg-secondary/15 p-6 md:p-8 flex flex-col justify-between space-y-6 min-w-0">
             <div className="space-y-4">
               <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground px-2">
                 Select Case Study

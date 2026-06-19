@@ -20,9 +20,6 @@ export function AiProducts() {
           <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-muted-foreground">
             <span className="text-primary font-extrabold text-base leading-none">*</span> AI &amp; INNOVATION
           </div>
-
-          {/* Integration Icons (Social Style) */}
-
         </div>
 
         {/* Center Visual Frame with Stepped Cutouts */}
@@ -37,16 +34,6 @@ export function AiProducts() {
 
           {/* Subtle overlay gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10 pointer-events-none" />
-
-          {/* Stepped Cutout Masks (Matching Page/Card Background Color) */}
-          {/* 1. Top Horizontal Mask (left to 78%) */}
-
-
-          {/* 2. Top-Left Vertical Mask (overlapping to deepen corner cutout) */}
-
-
-          {/* 3. Bottom-Left Cutout Mask */}
-
 
           {/* 4. Bottom-Right Stats Cutout Mask */}
           <div className="absolute bottom-0 right-0 w-[30%] h-[38%] bg-card rounded-tl-[1.5rem] border-t border-l border-border/20 flex flex-col justify-center px-6 py-4">
@@ -66,8 +53,6 @@ export function AiProducts() {
             </div>
           </div>
         </div>
-
-       
 
         {/* Details & Action Grid */}
         <div className="grid gap-8 lg:grid-cols-12 pt-2">
@@ -107,9 +92,7 @@ export function AiProducts() {
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </div>
-
         </div>
-
       </div>
     </section>
   )
