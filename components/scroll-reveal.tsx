@@ -220,6 +220,7 @@ export function StaggerReveal({
   threshold?: number
   once?: boolean
   childClassName?: string
+  baseDelay?: number
 }) {
   return (
     <StaggerContainer threshold={threshold} once={once} className={className}>

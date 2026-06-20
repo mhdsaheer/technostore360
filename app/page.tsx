@@ -14,9 +14,9 @@ import { SmoothScrollProvider } from "@/components/smooth-scroll-provider"
 export default function Page() {
   return (
     <SmoothScrollProvider>
-      <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <div className="min-h-screen bg-background text-foreground">
         <SiteHeader />
-        <main className="overflow-x-hidden">
+        <main>
           <Hero />
 
           <ScrollReveal variant="fade-up" duration={1000} distance={60} once={false}>

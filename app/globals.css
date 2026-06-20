@@ -128,8 +128,6 @@ html.light {
   }
   html {
     @apply font-sans;
-    overflow-x: hidden !important;
-    max-width: 100% !important;
   }
   html.dark {
     color-scheme: dark;
@@ -139,11 +137,11 @@ html.light {
   }
   body {
     @apply bg-background text-foreground;
-    overflow-x: hidden !important;
-    max-width: 100% !important;
+    overflow: clip;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 }
+
 
 /* ── Respect reduced motion preference ── */
 @media (prefers-reduced-motion: reduce) {
